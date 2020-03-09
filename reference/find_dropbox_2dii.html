@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Insert the symbol for degrees — degrees • r2dii.utils</title>
+<title>Easily access directories in your local copy of 2dii's Dropbox folder — find_dropbox_2dii • r2dii.utils</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,15 @@
 
 
 
-<meta property="og:title" content="Insert the symbol for degrees — degrees" />
-<meta property="og:description" content="Insert the symbol for degrees" />
+<meta property="og:title" content="Easily access directories in your local copy of 2dii's Dropbox folder — find_dropbox_2dii" />
+<meta property="og:description" content="These functions create cross-platform paths pointing to 2dii's Dropbox
+folder:
+find_dropbox_2dii() is user-oriented; it checks the output is an existing
+path.
+path_dropbox_2dii() is low-level, developer-oriented; it doesn't care
+if the output is not an existing path.
+
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -129,36 +136,86 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Insert the symbol for degrees</h1>
-    <small class="dont-index">Source: <a href='https://github.com/2DegreesInvesting/r2dii.utils/blob/master/R/degree.R'><code>R/degree.R</code></a></small>
-    <div class="hidden name"><code>degrees.Rd</code></div>
+    <h1>Easily access directories in your local copy of 2dii's Dropbox folder</h1>
+    <small class="dont-index">Source: <a href='https://github.com/2DegreesInvesting/r2dii.utils/blob/master/R/find_dropbox_2dii.R'><code>R/find_dropbox_2dii.R</code></a></small>
+    <div class="hidden name"><code>find_dropbox_2dii.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Insert the symbol for degrees</p>
+    <p>These functions create cross-platform paths pointing to 2dii's Dropbox
+folder:</p><ul>
+<li><p><code>find_dropbox_2dii()</code> is user-oriented; it checks the output is an existing
+path.</p></li>
+<li><p><code>path_dropbox_2dii()</code> is low-level, developer-oriented; it doesn't care
+if the output is not an existing path.</p></li>
+</ul>
+
     </div>
 
-    <pre class="usage"><span class='fu'>degrees</span>()</pre>
+    <pre class="usage"><span class='fu'>find_dropbox_2dii</span>(<span class='no'>...</span>)
 
+<span class='fu'>path_dropbox_2dii</span>(<span class='no'>...</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>Character vectors, if any values are <code>NA</code>, the result will also be
+<code>NA</code>.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A string.</p>
+    <p>A character string.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Your projects may need data stored in 2dii's Dropbox folder. Sometimes it is
+convenient to have your projects close to the data. But, in this case, it is
+a bad idea because the path to 2dii's Dropbox folder has a problematic space
+and symbol. (For example, <a href='https://github.com/2DegreesInvesting/resources/issues/51'>RStudio's Git pane may not work</a>.) Instead,
+place your projects somewhere with a sane path, such as
+<code>C:/Users/You/git/project/</code>, and access the data you need with
+<code>path_dropbox_2dii()</code>.</p>
+    <h2 class="hasAnchor" id="setup-for-a-custom-dropbox-folder"><a class="anchor" href="#setup-for-a-custom-dropbox-folder"></a>Setup for a custom Dropbox folder</h2>
+
+    
+
+<p>If the name of your 2dii Dropbox folder is different from the default,
+you may add this to .Rprofile (see <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_profile()</a></code>):</p><pre>options(r2dii_dropbox = "The name of your custom dropbox folder goes here")
+</pre>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other miscellaneous utility functions: 
-<code><a href='check_crucial_names.html'>check_crucial_names</a>()</code>,
-<code><a href='dropbox_exists.html'>dropbox_exists</a>()</code>,
-<code><a href='path_examples.html'>path_examples</a>()</code>,
-<code><a href='r2dii_packages.html'>r2dii_packages</a>()</code></p></div>
+    <div class='dont-index'><p><code><a href='degrees.html'>degrees()</a></code>, <code><a href='http://fs.r-lib.org/reference/path_expand.html'>fs::path_home()</a></code>.</p>
+<p>Other functions to output 2dii paths: 
+<code><a href='USER.NAME.html'>USER.NAME</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>degrees</span>()</div><div class='output co'>#&gt; [1] "°"</div><div class='input'><span class='kw pkg'>glue</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/glue/man/glue.html'>glue</a></span>(<span class='st'>"2{degrees()} Investing Initiative"</span>)</div><div class='output co'>#&gt; 2° Investing Initiative</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># If it points to a nonexistent directory, path_dropbox_2dii() doesn't care</span>
+<span class='fu'>path_dropbox_2dii</span>(<span class='st'>"path"</span>, <span class='st'>"to"</span>, <span class='st'>"nowhere"</span>)</div><div class='output co'>#&gt; /Users/runner/Dropbox (2° Investing)/path/to/nowhere</div><div class='input'>
+<span class='co'># find_dropbox_2dii() points to an existing directory or tells you if not:</span>
+<span class='co'># * It is a warning if the Dropbox folder exists but not the nested path</span>
+<span class='co'># * It is an error if the Dropbox folder does not exist:</span>
+<span class='no'>restore</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='kw'>r2dii_dropbox</span> <span class='kw'>=</span> <span class='st'>"No Dropbox folder here"</span>)
+
+<span class='fu'><a href='dropbox_exists.html'>dropbox_exists</a></span>()</div><div class='output co'>#&gt; /Users/runner/No Dropbox folder here 
+#&gt;                                FALSE </div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/try.html'>try</a></span>(
+  <span class='fu'>find_dropbox_2dii</span>(<span class='st'>"path"</span>, <span class='st'>"to"</span>, <span class='st'>"nowhere"</span>)
+)</div><div class='output co'>#&gt; Error :   2dii's Dropbox folder must exist, but this directory doesn't:
+#&gt;   <span style='color: #0000BB;'>'/Users/runner/No Dropbox folder here'</span><span>
+#&gt;   Did you add your custom Dropbox folder in .Rprofile? Example:
+#&gt;   </span><span style='color: #555555;'>`options(r2dii_dropbox = 'Name of your 2dii Dropbox folder')`</span><span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/options.html'>options</a></span>(<span class='no'>restore</span>)</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#setup-for-a-custom-dropbox-folder">Setup for a custom Dropbox folder</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>

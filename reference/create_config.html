@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Insert the symbol for degrees — degrees • r2dii.utils</title>
+<title>Create a configuration file — create_config • r2dii.utils</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Insert the symbol for degrees — degrees" />
-<meta property="og:description" content="Insert the symbol for degrees" />
+<meta property="og:title" content="Create a configuration file — create_config" />
+<meta property="og:description" content="Create a configuration file" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -129,35 +129,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Insert the symbol for degrees</h1>
-    <small class="dont-index">Source: <a href='https://github.com/2DegreesInvesting/r2dii.utils/blob/master/R/degree.R'><code>R/degree.R</code></a></small>
-    <div class="hidden name"><code>degrees.Rd</code></div>
+    <h1>Create a configuration file</h1>
+    <small class="dont-index">Source: <a href='https://github.com/2DegreesInvesting/r2dii.utils/blob/master/R/create_config.R'><code>R/create_config.R</code></a></small>
+    <div class="hidden name"><code>create_config.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Insert the symbol for degrees</p>
+    <p>Create a configuration file</p>
     </div>
 
-    <pre class="usage"><span class='fu'>degrees</span>()</pre>
+    <pre class="usage"><span class='fu'>create_config</span>(<span class='no'>...</span>, <span class='kw'>path</span> <span class='kw'>=</span> <span class='kw pkg'>fs</span><span class='kw ns'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/file_temp.html'>file_temp</a></span>(<span class='st'>"config-"</span>, <span class='kw'>ext</span> <span class='kw'>=</span> <span class='st'>".yml"</span>))</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>String(s) to pass to the <code>...</code> argument of <code><a href='https://rdrr.io/pkg/glue/man/glue.html'>glue::glue()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>path</th>
+      <td><p>String giving the path where to save the configuration file.</p></td>
+    </tr>
+    </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A string.</p>
+    <p>Invisible <code>path</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other miscellaneous utility functions: 
-<code><a href='check_crucial_names.html'>check_crucial_names</a>()</code>,
-<code><a href='dropbox_exists.html'>dropbox_exists</a>()</code>,
-<code><a href='path_examples.html'>path_examples</a>()</code>,
-<code><a href='r2dii_packages.html'>r2dii_packages</a>()</code></p></div>
+    <div class='dont-index'><p><a href='FINANCIAL.TIMESTAMP.html'>FINANCIAL.TIMESTAMP</a></p>
+<p>Other functions to deal with configuration files: 
+<code><a href='default_config.html'>default_config</a>()</code>,
+<code><a href='edit_config.html'>edit_config</a>()</code>,
+<code><a href='show_config.html'>show_config</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>degrees</span>()</div><div class='output co'>#&gt; [1] "°"</div><div class='input'><span class='kw pkg'>glue</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/glue/man/glue.html'>glue</a></span>(<span class='st'>"2{degrees()} Investing Initiative"</span>)</div><div class='output co'>#&gt; 2° Investing Initiative</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>create_config</span>(<span class='st'>"
+  default:
+    field: value
+"</span>)</div><div class='output co'>#&gt; <span style='color: #00BB00;'>✔</span><span> Saved to </span><span style='color: #0000BB;'>'/var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp6TkhYt/config-89738a1f6ee.yml'</span><span>.</div><div class='input'><span class='no'>out</span></div><div class='output co'>#&gt; /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T/Rtmp6TkhYt/config-89738a1f6ee.yml</div><div class='input'>
+<span class='fu'><a href='show_config.html'>show_config</a></span>(<span class='no'>out</span>)</div><div class='output co'>#&gt;   default:
+#&gt;     field: value</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
       <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>

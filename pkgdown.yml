@@ -1,7 +1,8 @@
-pandoc: '2.2'
-pkgdown: 1.4.1
-pkgdown_sha: ~
-articles: []
+pandoc: 2.7.3
+pkgdown: 1.4.1.9000
+pkgdown_sha: b18aa6bc9551ca78b75167abf44f81f396c9b548
+articles:
+  handling-unclean-data: handling-unclean-data.html
 urls:
   reference: https://github.com/2DegreesInvesting/r2dii.utils//reference
   article: https://github.com/2DegreesInvesting/r2dii.utils//articles
